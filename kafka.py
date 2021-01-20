@@ -59,9 +59,12 @@ def file_lister(graph_list):
     files_list = {}
     for graph in graph_list:
         temp = []
-        os.chdir(progress_files_path + graph + "/")
-        for file in glob.glob(progress_files_exte):
-            temp.append(file)
+        try:
+            os.chdir(progress_files_path + graph + "/")
+            for file in glob.glob(progress_files_exte):
+                temp.append(file)
+        except:
+            print("This Graph has no loading logs !")
         files_list[graph] = temp
     return files_list
 
